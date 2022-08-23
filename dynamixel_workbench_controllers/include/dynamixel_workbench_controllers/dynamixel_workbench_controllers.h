@@ -97,6 +97,7 @@ class DynamixelController
 
   bool is_moving_;
 
+  // double pos_P_, pos_D_, pos_I_; // DJ, position P,I,D ctrl gain
  public:
   DynamixelController();
   ~DynamixelController();

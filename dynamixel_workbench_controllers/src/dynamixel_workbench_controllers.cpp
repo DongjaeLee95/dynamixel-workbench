@@ -42,6 +42,10 @@ DynamixelController::DynamixelController()
     wheel_radius_ = priv_node_handle_.param<double>("mobile_robot_config/radius_of_wheel", 0.0);
   }
 
+  // pos_P_ = priv_node_handle_.param<double>("pos_P",800.0f);
+  // pos_D_ = priv_node_handle_.param<double>("pos_D",0.0f);
+  // pos_I_ = priv_node_handle_.param<double>("pos_I",0.0f);
+
   dxl_wb_ = new DynamixelWorkbench;
   jnt_tra_ = new JointTrajectory;
   jnt_tra_msg_ = new trajectory_msgs::JointTrajectory;
@@ -143,6 +147,12 @@ bool DynamixelController::initDynamixels(void)
             ROS_ERROR("Failed to write value[%d] on items[%s] to Dynamixel[Name : %s, ID : %d]", info.second.value, info.second.item_name.c_str(), dxl.first.c_str(), dxl.second);
             return false;
           }
+          // bool itemWrite(uint8_t id, const char *item_name, int32_t data, const char **log = NULL);
+          // bool resultP_ = dxl_wb_->itemWrite((uint8_t)dxl.second, "P_Gain", pos_P_);
+          // bool resultD_ = dxl_wb_->itemWrite((uint8_t)dxl.second, "D_Gain", pos_D_);
+          // bool resultI_ = dxl_wb_->itemWrite((uint8_t)dxl.second, "I_Gain", pos_I_);
+
+          // ROS_INFO_STREAM_ONCE("P,I,D gain setting results: " << resultP_ << " " << resultI_ << " " << resultD_ );
         }
       }
     }

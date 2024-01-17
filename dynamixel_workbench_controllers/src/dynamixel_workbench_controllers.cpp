@@ -158,6 +158,19 @@ bool DynamixelController::initDynamixels(void)
     }
 
     dxl_wb_->torqueOn((uint8_t)dxl.second);
+
+    int id_cnt = 0;
+    for(auto const& dxl:dynamixel_)
+    {
+        id_cnt++;
+    }
+    position_prev.resize(id_cnt);
+    velocity_prev.resize(id_cnt);
+    for(int i=0;i++;i<id_cnt)
+    {
+      position_prev[i] = 0.0;
+      velocity_prev[i] = 0.0;
+    }
   }
 
   return true;
@@ -501,6 +514,14 @@ void DynamixelController::publishCallback(const ros::TimerEvent&)
       velocity = dxl_wb_->convertValue2Velocity((uint8_t)dxl.second, (int32_t)dynamixel_state_list_.dynamixel_state[id_cnt].present_velocity);
       position = dxl_wb_->convertValue2Radian((uint8_t)dxl.second, (int32_t)dynamixel_state_list_.dynamixel_state[id_cnt].present_position);
 
+      if( std::abs(position_prev[id_cnt] - position) > 3.141592 )
+      {
+          position = position_prev[id_cnt];
+          velocity = velocity_prev[id_cnt];
+      }
+      position_prev[id_cnt] = position;
+      velocity_prev[id_cnt] = velocity;
+
       joint_state_msg_.effort.push_back(effort);
       joint_state_msg_.velocity.push_back(velocity);
       joint_state_msg_.position.push_back(position);
@@ -630,7 +651,7 @@ void DynamixelController::writeCallback(const ros::TimerEvent&)
         point_cnt = 0;
         position_cnt = 0;
 
-        ROS_INFO("Complete Execution");
+        // ROS_INFO("Complete Execution");
       }
     }
   }
@@ -659,7 +680,7 @@ void DynamixelController::trajectoryMsgCallback(const trajectory_msgs::JointTraj
 
     for (auto const& joint:msg->joint_names)
     {
-      ROS_INFO("'%s' is ready to move", joint.c_str());
+      // ROS_INFO("'%s' is ready to move", joint.c_str());
 
       jnt_tra_msg_->joint_names.push_back(joint);
       id_cnt++;
@@ -736,7 +757,7 @@ void DynamixelController::trajectoryMsgCallback(const trajectory_msgs::JointTraj
           cnt++;
         }
       }
-      ROS_INFO("Succeeded to get joint trajectory!");
+      // ROS_INFO("Succeeded to get joint trajectory!");
       is_moving_ = true;
     }
     else
@@ -746,7 +767,7 @@ void DynamixelController::trajectoryMsgCallback(const trajectory_msgs::JointTraj
   }
   else
   {
-    ROS_INFO_THROTTLE(1, "Dynamixel is moving");
+    // ROS_INFO_THROTTLE(1, "Dynamixel is moving");
   }
 }
 

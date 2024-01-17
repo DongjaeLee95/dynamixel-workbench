@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="usb_port"                default="/dev/dynamixel"/>
+  <arg name="usb_port"                default="/dev/dynamixel"/> <!--ttyUSB1  -->
   <arg name="dxl_baud_rate"           default="1000000"/>
   <arg name="namespace"               default="dynamixel_workbench"/>
 
@@ -8,7 +8,7 @@
   <arg name="use_joint_state"         default="true"/>
   <arg name="use_cmd_vel"             default="false"/>
 
-  <param name="dynamixel_info"          value="$(find dynamixel_workbench_controllers)/config/DJ.yaml"/>
+  <param name="dynamixel_info"          value="$(find dynamixel_workbench_controllers)/config/xc330.yaml"/>
 
   <node name="$(arg namespace)" pkg="dynamixel_workbench_controllers" type="dynamixel_workbench_controllers"
         required="true" output="screen" args="$(arg usb_port) $(arg dxl_baud_rate)">
@@ -19,9 +19,9 @@
     <param name="pos_D"                   value="0.0"/>
     <param name="pos_I"                   value="100.0"/> -->
     <rosparam>
-      publish_period: 0.001     <!-- 0.010 -->
-      dxl_read_period: 0.001    <!-- 0.010 -->
-      dxl_write_period: 0.001   <!-- 0.010 -->
+      publish_period: 0.004     <!-- 0.001 -->
+      dxl_read_period: 0.002    <!-- 0.001 -->
+      dxl_write_period: 0.002   <!-- 0.001 -->
       mobile_robot_config:                <!--this values will be set when 'use_cmd_vel' is true-->
         seperation_between_wheels: 0.160  <!--default value is set by reference of TB3-->
         radius_of_wheel: 0.033            <!--default value is set by reference of TB3-->

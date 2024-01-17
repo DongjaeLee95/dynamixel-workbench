@@ -1,0 +1,54 @@
+# You can find control table of Dynamixel on emanual (http://emanual.robotis.com/#control-table)
+# Control table item has to be set Camel_Case and not included whitespace
+# You are supposed to set at least Dynamixel ID
+servo1:
+  ID: 1
+  Return_Delay_Time: 0
+  Operating_Mode: 5
+  Position_P_Gain: 2000
+  # Position_D_Gain: 2000
+servo2:
+  ID: 2
+  Return_Delay_Time: 0
+  Operating_Mode: 5
+  Position_P_Gain: 2000
+  # Position_D_Gain: 2000
+servo3:
+  ID: 3
+  Return_Delay_Time: 0
+  Operating_Mode: 5
+  Position_P_Gain: 2000
+  # Position_D_Gain: 2000
+servo4:
+  ID: 4
+  Return_Delay_Time: 0
+  Operating_Mode: 5
+  Position_P_Gain: 2000 #4000
+  # Position_D_Gain: 2000
+servo5:
+  ID: 5
+  Return_Delay_Time: 0
+  Operating_Mode: 5
+  Position_P_Gain: 2000
+  # Position_D_Gain: 2000
+servo6:
+  ID: 6
+  Return_Delay_Time: 0
+  Operating_Mode: 5
+  Position_P_Gain: 2000
+  # Position_D_Gain: 2000
+# servo8:
+#   ID: 8
+#   Return_Delay_Time: 0
+#   Operating_Mode: 5
+#   Position_P_Gain: 4000
+servo9:
+  ID: 9
+  Return_Delay_Time: 0
+  Operating_Mode: 5
+  Position_P_Gain: 1000
+servo99:
+  ID: 99
+  Return_Delay_Time: 0
+  Operating_Mode: 5  
+  Position_P_Gain: 4000

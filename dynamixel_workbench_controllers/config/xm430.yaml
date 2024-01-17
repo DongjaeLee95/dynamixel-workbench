@@ -1,0 +1,10 @@
+servo7:
+  ID: 7
+  Return_Delay_Time: 0
+  Operating_Mode: 5  
+  Position_P_Gain: 2000
+servo8:
+  ID: 8
+  Return_Delay_Time: 0
+  Operating_Mode: 5  
+  Position_P_Gain: 2000

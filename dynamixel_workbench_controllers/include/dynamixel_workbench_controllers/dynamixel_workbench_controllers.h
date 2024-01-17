@@ -81,6 +81,9 @@ class DynamixelController
   sensor_msgs::JointState joint_state_msg_;
   std::vector<WayPoint> pre_goal_;
 
+  std::vector<double> position_prev;
+  std::vector<double> velocity_prev;
+
   bool is_joint_state_topic_;
   bool is_cmd_vel_topic_;
   bool use_moveit_;

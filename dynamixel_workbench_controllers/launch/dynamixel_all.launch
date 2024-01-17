@@ -1,0 +1,7 @@
+<!-- <?xml version="1.0"?>
+
+<launch>
+    <include file="$(find dynamixel_workbench_controllers)/launch/xc330.launch"/>
+    <include file="$(find dynamixel_workbench_controllers)/launch/xm430.launch"/>
+
+</launch> -->
